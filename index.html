@@ -145,6 +145,8 @@
         count++;
         progress.value = count;
         span_page.innerHTML = count;
+
+        console.log('rightanswer is' + rightanswer);
     })
 
     button.addEventListener('click', function () {
@@ -179,7 +181,8 @@
             if (vbn[2].length == 0) {
                 dataForChart.splice(randomData, 1)
             }
-            console.log('rightanswer is ' + rightanswer);
+
+            console.log('rightanswer is' + rightanswer);
         }
     })
 
@@ -209,6 +212,8 @@
         count++;
         progress.value = count;
         span_page.innerHTML = count;
+
+        console.log('rightanswer is' + rightanswer);
     })
 
     button_part2.addEventListener('click', function () {
@@ -239,8 +244,9 @@
             if (vbn[2].length == 0) {
                 piedata.splice(randomData, 1)
             }
+
+            console.log('rightanswer is' + rightanswer);
         }
-        console.log('rightanswer is' + rightanswer);
     })
 
 
