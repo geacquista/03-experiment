@@ -8,58 +8,33 @@
     <title>Document</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script type="text/javascript" src="charts.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
-
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
 
-    <script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+  <script>
+    // TODO: Replace the following with your app's Firebase project configuration
+    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
     var firebaseConfig = {
-        apiKey: "AIzaSyCLzYTkIJBjNVO62cb1MsXrj1RLOV25ZP0",
-        authDomain: "experiment3-fa13c.firebaseapp.com",
-        projectId: "experiment3-fa13c",
-        storageBucket: "experiment3-fa13c.appspot.com",
-        messagingSenderId: "572406468536",
-        appId: "1:572406468536:web:0da195587b2edd03ca894d",
-        measurementId: "G-P909DBQD7Z"
+      // ...
     };
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    </script>
-    <h1>Datastore and Firebase Auth Example</h1>
+  </script>
 
-    <div id="firebaseui-auth-container"></div>
-    
-    <button id="sign-out" hidden=true>Sign Out</button>
-    
-    <div id="login-info" hidden=true>
-      <h2>Login info:</h2>
-      {% if user_data %}
-        <dl>
-          <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
-          <dt>Email</dt><dd>{{ user_data['email'] }}</dd>
-          <dt>Last 10 visits</dt><dd>
-            {% for time in times %}
-              <p>{{ time['timestamp'] }}</p>
-            {% endfor %} </dd>
-        </dl>
-      {% elif error_message %}
-        <p>Error: {{ error_message }}</p>
-      {% endif %}
-    </div>
-
+  
     <div class="progress">
         <div>Page <span id="page"></span>/73</div>
         <progress value="25" max="73"></progress>
@@ -108,8 +83,6 @@
         <p>Thanks!</p>
         <button><a href="https://www.google.com/">Close</a></button>
     </div>
-
-        
 </body>
 <script>
     var count = 0;
@@ -301,7 +274,5 @@
 
 
 </script>
-
-
 
 </html>
