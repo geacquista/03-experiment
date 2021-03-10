@@ -12,33 +12,32 @@
 </head>
 
 <body>
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
 
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
-  <script>
-    // TODO: Replace the following with your app's Firebase project configuration
-    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
-        apiKey: "AIzaSyC4SdSclIpleOjYYNqLXR40gO-jh7Ne98c",
-        authDomain: "vis-proj-3.firebaseapp.com",
-        projectId: "vis-proj-3",
-        storageBucket: "vis-proj-3.appspot.com",
-        messagingSenderId: "159414294621",
-        appId: "1:159414294621:web:c40e177c24ec2fb7ed95b4",
-        measurementId: "G-1CQ107N56R"
+        apiKey: "AIzaSyCipj-2HaHg3X1GqxTL8ceptKeMEaVg3X4",
+        authDomain: "vis-3-3fcf1.firebaseapp.com",
+        projectId: "vis-3-3fcf1",
+        storageBucket: "vis-3-3fcf1.appspot.com",
+        messagingSenderId: "20093787985",
+        appId: "1:20093787985:web:e53d492ec5356f175ebd70",
+        measurementId: "G-9CWDKL5WXQ"
     };
-
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-  </script>
+    firebase.analytics();
+    </script>
+
 
 
     <div class="progress">
@@ -90,6 +89,7 @@
         <button><a href="https://www.google.com/">Close</a></button>
     </div>
 </body>
+
 <script>
     var count = 0;
     var rightanswer;
@@ -278,150 +278,6 @@
         }
     })
 
-
-</script>
-<script>
-    function signInWithEmailPassword() {
-  var email = "test@example.com";
-  var password = "hunter2";
-  // [START auth_signin_password]
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in
-      var user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
-  // [END auth_signin_password]
-}
-
-function signUpWithEmailPassword() {
-  var email = "test@example.com";
-  var password = "hunter2";
-  // [START auth_signup_password]
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in 
-      var user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ..
-    });
-  // [END auth_signup_password]
-}
-
-function sendEmailVerification() {
-  // [START auth_send_email_verification]
-  firebase.auth().currentUser.sendEmailVerification()
-    .then(() => {
-      // Email verification sent!
-      // ...
-    });
-  // [END auth_send_email_verification]
-}
-
-function sendPasswordReset() {
-  const email = "sam@example.com";
-  // [START auth_send_password_reset]
-  firebase.auth().sendPasswordResetEmail(email)
-    .then(() => {
-      // Password reset email sent!
-      // ..
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ..
-    });
-  // [END auth_send_password_reset]
-}
-</script>
-<script>
-    function makeGoogleCredential(googleUser) {
-  // [START auth_make_google_credential]
-  var credential = firebase.auth.GoogleAuthProvider.credential(
-    googleUser.getAuthResponse().id_token);
-  // [END auth_make_google_credential]
-}
-
-function makeFacebookCredential(response) {
-  // [START auth_make_facebook_credential]
-  var credential = firebase.auth.FacebookAuthProvider.credential(
-    response.authResponse.accessToken);
-  // [END auth_make_facebook_credential]
-}
-
-function makeEmailCredential(email, password) {
-  // [START auth_make_email_credential]
-  var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-  // [END auth_make_email_credential]
-}
-
-function signOut() {
-  // [START auth_sign_out]
-  firebase.auth().signOut().then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-  // [END auth_sign_out]
-}
-
-function authStateListener() {
-  // [START auth_state_listener]
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      var uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
-  // [END auth_state_listener]
-}
-
-function setLanguageCode() {
-  // [START auth_set_language_code]
-  firebase.auth().languageCode = 'it';
-  // To apply the default browser preference instead of explicitly setting it.
-  // firebase.auth().useDeviceLanguage();
-  // [END auth_set_language_code]
-}
-
-function authWithCredential(credential) {
-  // [START auth_signin_credential]
-  // Sign in with the credential from the user.
-  firebase.auth()
-    .signInWithCredential(credential)
-    .then((result) => {
-      // Signed in 
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // ...
-    });
-  // [END auth_signin_credential]
-}
-
-function signInRedirect(provider) {
-  // [START auth_signin_redirect]
-  firebase.auth().signInWithRedirect(provider);
-  // [END auth_signin_redirect]
-}
 </script>
 
 </html>
