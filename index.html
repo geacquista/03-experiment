@@ -55,7 +55,7 @@
             var db = firebase.firestore();
             var username = prompt("What is your name?");
             db.collection("users").add({
-                first: username
+                firstname: username
             })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
@@ -67,8 +67,8 @@
         </script>
     </div>
     <div class="submit_instruc">
-        <button id="disagree"><a href="https://www.google.com/">DISAGREE</a></button>
-        <button id="agree">AGREE</button>
+        <button id="disagree"><a href="https://www.google.com/">i don't actually want to</a></button>
+        <button id="agree">get started!</button>
     </div>
     <div class="svg" id="svg"></div>
     <div class="ps">
@@ -89,11 +89,11 @@
     </div>
     <div class="part1">
         <p>Part 1</p>
-        <button id="continue1">Continue</button>
+        <button id="continue1">here we go!</button>
     </div>
     <div class="part2">
         <p>Part 2</p>
-        <button id="continue2">Continue</button>
+        <button id="continue2">final stretch!</button>
     </div>
     <div class="Thanks">
         <p>Thanks!</p>
