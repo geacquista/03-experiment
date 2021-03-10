@@ -8,6 +8,9 @@
     <title>Document</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script type="text/javascript" src="charts.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -36,43 +39,14 @@
     firebase.analytics();
     var db = firebase.firestore();
 
-    db.collection("users").add({
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-    db.collection("users").add({
-        first: "Alan",
-        middle: "Mathison",
-        last: "Turing",
-        born: 1912
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-    db.collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-        });
-    });
     </script>
-
-
 
     <div class="progress">
         <div>Page <span id="page"></span>/73</div>
         <progress value="25" max="73"></progress>
     </div>
 
+    
     <div class="instruc">
         <p>In this experiment,</p>
         <p>you are asked to judge</p>
@@ -82,6 +56,21 @@
         <p>Click the 'agree' button to begin.</p>
         <br>
         <p>Thank you!</p>
+    </div>
+    <div class="begin">
+        <script>
+            var username = prompt("What is your name?");
+            db.collection("users").add({
+                first: username
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+
+        </script>
     </div>
     <div class="submit_instruc">
         <button id="disagree"><a href="https://www.google.com/">DISAGREE</a></button>
@@ -308,6 +297,4 @@
 
 </script>
 
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 </html>
