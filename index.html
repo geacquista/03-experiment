@@ -14,12 +14,7 @@
 
 <body>
    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
-
+   
     <div class="progress">
         <div>Page <span id="page"></span>/73</div>
         <progress value="25" max="73"></progress>
@@ -37,17 +32,14 @@
         <p>Thank you!</p>
     </div>
     <div class="begin">
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
         <script>
-             import firebase from "firebase/app";
-            // If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
-            // import * as firebase from "firebase/app"
+            
 
-            // If you enabled Analytics in your project, add the Firebase SDK for Analytics
-            import "firebase/analytics";
-
-            // Add the Firebase products that you want to use
-            import "firebase/auth";
-            import "firebase/firestore";
             var firebaseConfig = {
                 apiKey: "AIzaSyCipj-2HaHg3X1GqxTL8ceptKeMEaVg3X4",
                 authDomain: "vis-3-3fcf1.firebaseapp.com",
