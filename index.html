@@ -23,29 +23,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
 
     <script>
-        import firebase from "firebase/app";
-        // If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
-        // import * as firebase from "firebase/app"
-
-        // If you enabled Analytics in your project, add the Firebase SDK for Analytics
-        import "firebase/analytics";
-
-        // Add the Firebase products that you want to use
-        import "firebase/auth";
-        import "firebase/firestore";
-        var firebaseConfig = {
-            apiKey: "AIzaSyCipj-2HaHg3X1GqxTL8ceptKeMEaVg3X4",
-            authDomain: "vis-3-3fcf1.firebaseapp.com",
-            projectId: "vis-3-3fcf1",
-            storageBucket: "vis-3-3fcf1.appspot.com",
-            messagingSenderId: "20093787985",
-            appId: "1:20093787985:web:e53d492ec5356f175ebd70",
-            measurementId: "G-9CWDKL5WXQ"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        var db = firebase.firestore();
+       
 
     </script>
 
@@ -67,6 +45,29 @@
     </div>
     <div class="begin">
         <script>
+             import firebase from "firebase/app";
+            // If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
+            // import * as firebase from "firebase/app"
+
+            // If you enabled Analytics in your project, add the Firebase SDK for Analytics
+            import "firebase/analytics";
+
+            // Add the Firebase products that you want to use
+            import "firebase/auth";
+            import "firebase/firestore";
+            var firebaseConfig = {
+                apiKey: "AIzaSyCipj-2HaHg3X1GqxTL8ceptKeMEaVg3X4",
+                authDomain: "vis-3-3fcf1.firebaseapp.com",
+                projectId: "vis-3-3fcf1",
+                storageBucket: "vis-3-3fcf1.appspot.com",
+                messagingSenderId: "20093787985",
+                appId: "1:20093787985:web:e53d492ec5356f175ebd70",
+                measurementId: "G-9CWDKL5WXQ"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            var db = firebase.firestore();
             var username = prompt("What is your name?");
             db.collection("users").add({
                 first: username
