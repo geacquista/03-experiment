@@ -1,1 +1,1 @@
-The files in this folder are used for deployment on the server.
+The files in this folder are used for deployment on the server
