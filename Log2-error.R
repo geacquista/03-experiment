@@ -12,6 +12,10 @@ data %>%
   stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5) +
   coord_flip()
 
+
+# write.csv(data$error, "/Users/macbookpro/Desktop/data_error.xlsx")  # To export the accuracy
+
+
 #data$new_name <- ifelse(data$visType  == "Type1","",
 #                        ifelse(data$visType  == "Type2","Devided",
 #                               ifelse(data$visType  == "Type3","Bar",
