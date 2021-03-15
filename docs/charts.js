@@ -14,6 +14,8 @@ function type1(random1, random2) {
         rightanswer = (10 * (10 ** ((random1 - 1) / 12))) / (10 * (10 ** ((random2 - 1) / 12)));
     }
 
+    visType = 'Type1';
+
     //create dateset for group 1
     for (let i = 0; i < 5; i++) {
         if (i == 1) {
@@ -165,6 +167,8 @@ function type3(random1, random2) {
     } else {
         rightanswer = (10 * (10 ** ((random1 - 1) / 12))) / (10 * (10 ** ((random2 - 1) / 12)));
     }
+
+    visType = 'Type3';
 
     //create dateset for group 1
     for (let i = 0; i < 5; i++) {
@@ -323,6 +327,8 @@ function type2(random1, random2) {
     } else {
         rightanswer = (10 * (10 ** ((random1 - 1) / 12))) / (10 * (10 ** ((random2 - 1) / 12)));
     }
+
+    visType = 'Type2';
 
     for (key in stackdata1[0]) {
         if (key == 'num1') {
@@ -493,6 +499,8 @@ function type4(random1, random2) {
     } else {
         rightanswer = (10 * (10 ** ((random1 - 1) / 12))) / (10 * (10 ** ((random2 - 1) / 12)));
     }
+
+    visType = 'Type4';
 
     for (key in stackdata1[0]) {
         if (key == 'num4') {
@@ -669,6 +677,8 @@ function type5(random1, random2) {
         rightanswer = (10 * (10 ** ((random1 - 1) / 12))) / (10 * (10 ** ((random2 - 1) / 12)));
     }
 
+    visType = 'Type5';
+
     for (key in stackdata1[0]) {
         if (key == 'num4') {
             stackdata1[0][key] = 10 * (10 ** ((random1 - 1) / 12));
@@ -834,6 +844,8 @@ function type6(data, index) {
         rightanswer = data[index[0]] / data[index[1]];
     }
 
+    visType = 'Type6';
+
     var svg = d3.select('div.svg')
         .append('svg')
         .attr('width', width)
@@ -880,6 +892,8 @@ function type7(data, index) {
     } else {
         rightanswer = data[index[0]] / data[index[1]];
     }
+
+    visType = 'Type7';
 
     var svg = d3.select('div.svg')
         .append('svg')
