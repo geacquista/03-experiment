@@ -969,10 +969,156 @@ function type7(data, index) {
         .attr('text-anchor', 'middle')
         .style('font-size', '15px')
         .attr('dy', 3)
-
-
-
 }
+
+
+function type60(data, index) {
+    if (data[index[0]] > data[index[1]]) {
+        rightanswer = data[index[1]] / data[index[0]];
+    } else {
+        rightanswer = data[index[0]] / data[index[1]];
+    }
+
+    var svg = d3.select('div.svg')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+
+    var pie = d3.pie()
+        .sort(null);
+    var piedata = pie(data);
+    var arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(100);
+
+    var arcs = svg.selectAll('g')
+        .data(piedata)
+        .enter()
+        .append('g')
+        .style('transform', 'translate(200px,250px)');
+
+    arcs.append('path')
+        .attr('fill', 'blue')
+        .attr('stroke', 'pink')
+        .attr('stroke-width', '2px')
+        .attr('d', function (d) {
+            return arc(d)
+        });
+    arcs.append('circle')
+        .attr("cx", function (d) {
+            return arc.centroid(d)[0]
+        })
+        .attr("cy", function (d) {
+            return arc.centroid(d)[1]
+        })
+        .attr("r", "2px")
+        .attr("fill", function (d, i) {
+            if (i == index[0] || i == index[1]) {
+                return 'pink';
+            } else {
+                return 'blue';
+            }
+        })
+}
+function type70(data, index) {
+    if (data[index[0]] > data[index[1]]) {
+        rightanswer = data[index[1]] / data[index[0]];
+    } else {
+        rightanswer = data[index[0]] / data[index[1]];
+    }
+
+    var svg = d3.select('div.svg')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+
+    var xScale = d3.scaleBand()
+        .domain(lables)
+        .rangeRound([0, width / 3]);
+    var yScale = d3.scaleLinear()
+        .domain([0, 40])
+        .range([(height - padding * 2) * 2 / 3, 0]);
+
+    var rects = svg.append('g');
+    rects.selectAll(".group1")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "group1")
+        .attr("x", function (d, i) {
+            return xScale(lables[i]);
+        })
+        .attr("y", function (d) {
+            return yScale(d) + padding;
+        })
+        .attr('width', (width / 3) / data.length)
+        .attr('height', function (d) {
+            return (height - padding * 2) * 2 / 3 - yScale(d);
+        })
+        .attr('fill', 'orange')
+        .attr('stroke', 'pink')
+        .attr('stroke-width', '2px')
+        .style('transform', 'translate(120px,' + ((height - padding * 2) / 3) + 'px)')
+
+    var circle = svg.append('g');
+    circle.selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr("cx", function (d, i) {
+            return xScale(lables[i]);
+        })
+        .attr("cy", function (d) {
+            return 410;
+        })
+        .attr("r", "5px")
+        .attr("fill", function (d, i) {
+            if (i == index[0] || i == index[1]) {
+                return 'pink';
+            } else {
+                return 'orange';
+            }
+        })
+        .style('transform', 'translate(135px, 0px)')
+
+
+    var lines = svg.append('g')
+    lines.append("line")
+        .attr("x1", padding)
+        .attr("y1", height - padding)
+        .attr("x2", width - padding)
+        .attr("y2", height - padding)
+        .attr('stroke', 'black')
+    // .attr('stroke-width', '2px');
+
+    lines.append("line")
+        .attr("x1", padding)
+        .attr("y1", height - padding)
+        .attr("x2", padding)
+        .attr("y2", padding + (height - padding * 2) / 3)
+        .attr('stroke', 'black')
+
+    var text = svg.append('g')
+    text.append('text')
+        .text('40')
+        .attr('fill', 'black')
+        .attr('x', 10)
+        .attr('y', 160)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '15px')
+        .attr('dy', 3)
+
+    text.append('text')
+        .text('0')
+        .attr('fill', 'black')
+        .attr('x', 10)
+        .attr('y', 420)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '15px')
+        .attr('dy', 3)
+}
+
+
 function createPieData() {
     var piedataAll = [];
 
@@ -1007,4 +1153,204 @@ function createPieData() {
     }
     return piedataAll;
 }
+
+
+function createOtherData() {
+    var piedataAll = [];
+
+    for (let i = 0; i < 5; i++) {
+        let piedata = [];
+        let data = [];
+        let index = [];
+        let val1, val2, val3;
+        val1 = d3.randomUniform(2, 17)();
+        do {
+            val2 = d3.randomUniform(0, val1)();
+        } while (val2 == (val1 / 2) && Math.abs(val2 - val1) < 0.1);
+        do {
+            val3 = d3.randomUniform(2, 17)();
+        } while (val3 == val1 && val3 == val2 && val3 == (val1 - val2));
+        var piedata1 = 20 - val1;
+        var piedata2 = 20 + val2;
+        var piedata3 = 20 + val1 - val2;
+        var piedata4 = 20 + val3;
+        var piedata5 = 20 - val3;
+        data.push(piedata1);
+        data.push(piedata2);
+        data.push(piedata3);
+        data.push(piedata4);
+        data.push(piedata5);
+        piedata.push(data);
+        index.push(d3.maxIndex(data));
+        index.push(d3.minIndex(data));
+        piedata.push(index);
+        piedata.push([1, 2, 3, 4]);
+        piedataAll.push(piedata)
+    }
+    return piedataAll;
+}
+
+
+//radial
+/*
+function type0(data, index) {
+    if (data[index[0]] > data[index[1]]) {
+        rightanswer = data[index[1]] / data[index[0]];
+    } else {
+        rightanswer = data[index[0]] / data[index[1]];
+    }
+    
+    innerRadius = 80,
+    outerRadius = Math.min(width, height) / 2;
+    var svg = d3.select('div.svg')
+        .append('svg')
+        .attr("width", width)
+        .attr("height", height)
+        .append("g");
+        //.attr("transform", "translate(" + width / 2 + "," + ( height/2+100 )+ ")");
+
+    var xScale = d3.scaleBand()
+        .domain(lables)
+        .align(0)
+        .rangeRound([0, width / 3]);
+    var yScale = d3.scaleLinear()
+        .domain([0, 40])
+        .range([innerRadius, outerRadius]) ;
+
+    svg.append("g")
+        .selectAll("path")
+        .data(data)
+        .enter()
+        .append("path")
+        .attr("fill", "#69b3a2")
+        .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+            .innerRadius(innerRadius)
+            .outerRadius(function(d) { return y(d['Value']); })
+            .startAngle(function(d) { return x(d.Country); })
+            .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
+            .padAngle(0.01)
+            .padRadius(innerRadius));
+
+        
+        var svg = d3.select('div.svg')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height)
+
+        var pie = d3.pie()
+            .sort(null);
+        var piedata = pie(data);
+        var arc = d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(100);
+    
+        var arcs = svg.selectAll('g')
+            .data(piedata)
+            .enter()
+            .append('g')
+            .style('transform', 'translate(200px,250px)');
+    
+        arcs.append('path')
+            .attr('fill', 'red')
+            .attr('stroke', 'red')
+            .attr('d', d3.arc() );    // imagine your doing a part of a donut plot
+
+        arcs.append('circle')
+            .attr("cx", function (d) {
+                return arc.centroid(d)[0]
+            })
+            .attr("cy", function (d) {
+                return arc.centroid(d)[1]
+            })
+            .attr("r", "3px")
+            .attr("fill", function (d, i) {
+                if (i == index[0] || i == index[1]) {
+                    return 'black';
+                } else {
+                    return 'white';
+                }
+            })
+
+*/
+            /*
+    var rects = svg.append('g');
+    rects.selectAll(".group1")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "group1")
+        .attr("x", function (d, i) {
+            return xScale(lables[i]);
+        })
+        .attr("y", function (d) {
+            return yScale(d) + padding;
+        })
+        .attr('width', (width / 3) / data.length)
+        .attr('height', function (d) {
+            return (height - padding * 2) * 2 / 3 - yScale(d);
+        })
+        .attr('fill', 'white')
+        .attr('stroke', 'black')
+        .style('transform', 'translate(120px,' + ((height - padding * 2) / 3) + 'px)')
+
+    var circle = svg.append('g');
+    circle.selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr("cx", function (d, i) {
+            return xScale(lables[i]);
+        })
+        .attr("cy", function (d) {
+            return 410;
+        })
+        .attr("r", "3px")
+        .attr("fill", function (d, i) {
+            if (i == index[0] || i == index[1]) {
+                return 'black';
+            } else {
+                return 'white';
+            }
+        })
+        .style('transform', 'translate(135px, 0px)')
+
+
+    var lines = svg.append('g')
+    lines.append("line")
+        .attr("x1", padding)
+        .attr("y1", height - padding)
+        .attr("x2", width - padding)
+        .attr("y2", height - padding)
+        .attr('stroke', 'black')
+    // .attr('stroke-width', '2px');
+
+    lines.append("line")
+        .attr("x1", padding)
+        .attr("y1", height - padding)
+        .attr("x2", padding)
+        .attr("y2", padding + (height - padding * 2) / 3)
+        .attr('stroke', 'red')
+
+    var text = svg.append('g')
+    text.append('text')
+        .text('40')
+        .attr('fill', 'red')
+        .attr('x', 10)
+        .attr('y', 160)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '15px')
+        .attr('dy', 3)
+
+    text.append('text')
+        .text('0')
+        .attr('fill', 'black')
+        .attr('x', 10)
+        .attr('y', 420)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '15px')
+        .attr('dy', 3)
+}
+        */
+
+
 

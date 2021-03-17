@@ -43,16 +43,25 @@
             position: absolute;
             background: teal;
             width: 100px;
-            height: 30px;
-            left: 10px;
+            height: 35px;
+            left: 20px;
         }
         div.submit_instruc button#agree{
             display: block;
             position: absolute;
             background: teal;
             width: 100px;
-            height: 30px;
-            right: 10px;
+            height: 35px;
+            right: 139px;
+            color: white;
+        }
+        div.submit_instruc button#PART3{
+            display: block;
+            position: absolute;
+            background: teal;
+            width: 100px;
+            height: 35px;
+            right: 1px;
             color: white;
         }
         div.svg {

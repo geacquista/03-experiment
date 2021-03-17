@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
     <script type="text/javascript" src="charts.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-   <!-- The core Firebase JS SDK is always required and must be listed first -->
    
     <div class="progress">
         <div>Page <span id="page"></span>/73</div>
@@ -32,50 +32,19 @@
         <p>Thank you!</p>
     </div>
     <div class="begin">
-        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
-
-        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
-
-        <script>
-            
-
-            var firebaseConfig = {
-                apiKey: "AIzaSyCipj-2HaHg3X1GqxTL8ceptKeMEaVg3X4",
-                authDomain: "vis-3-3fcf1.firebaseapp.com",
-                projectId: "vis-3-3fcf1",
-                storageBucket: "vis-3-3fcf1.appspot.com",
-                messagingSenderId: "20093787985",
-                appId: "1:20093787985:web:e53d492ec5356f175ebd70",
-                measurementId: "G-9CWDKL5WXQ"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-            var db = firebase.firestore();
-            var username = prompt("What is your name?");
-            db.collection("users").add({
-                firstname: username
-            })
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
-
-        </script>
+        
     </div>
     <div class="submit_instruc">
-        <button id="disagree"><a href="https://www.google.com/">i don't actually want to</a></button>
-        <button id="agree">get started!</button>
+        <button id="disagree"><a href="https://www.google.com/">disagree!</a></button>
+        <button id="agree">agree!</button>
+        <button id="PART3"><a href="design.html">straight to part 3!</a></button>
     </div>
     <div class="svg" id="svg"></div>
     <div class="ps">
         <p>Two values are marked with dots</p>
         <p>What do you think the percent of the smaller value to the larger value?</p>
         <p>Please put your answer below</p>
-        <p>e.g.If you think the smaller one is exactly a half of the bigger one.</p>
+        <p>e.g. If you think the smaller one is exactly a half of the bigger one.</p>
         <p>Please input '50'</p>
     </div>
 
@@ -111,6 +80,7 @@
     var input_part1 = document.getElementsByTagName('input')[0];
     var input_part2 = document.getElementsByTagName('input')[1];
 
+
     var button_agree = document.getElementById('agree');
     var div_instruc = document.getElementsByClassName('instruc')[0];
     var div_submit_instruc = document.getElementsByClassName('submit_instruc')[0];
@@ -123,7 +93,8 @@
     //this is part 2 submit button
     var div_submit_part2 = document.getElementsByClassName('submit_part2')[0];
     var button_part2 = document.getElementById('Next2');
-
+    
+ 
     var div_part1 = document.getElementsByClassName('part1')[0];
     var button_continue1 = document.getElementById('continue1');
     var div_part2 = document.getElementsByClassName('part2')[0];
@@ -157,6 +128,7 @@
         progress.value = count;
         span_page.innerHTML = count;
     })
+
     button_continue1.addEventListener('click', function () {
         div_part1.style.display = 'none';
 
